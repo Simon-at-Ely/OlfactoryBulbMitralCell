@@ -18,7 +18,7 @@ sys.path.append( os.path.join(os.environ['HOME'],
     'neurospaces_project/sspy/source/snapshots/0/tests/python'))
 
 # The location of model files to be loaded
-os.environ['NEUROSPACES_NMC_MODELS']= '/home/Simon/nC_projects/Rat_Mitral_Cell_Gap_Network_copy4_copy2_Genesis_single_cell_no_calcium/generatedGENESIS'
+os.environ['NEUROSPACES_NMC_MODELS']= '/home/Simon/OlfactoryBulbMitralCell/SingleMitralCellsNoCalcium'
 
 # The following four commands set up SSPy as the scheduler component
 
@@ -98,7 +98,10 @@ my_output = scheduler.CreateOutput('My output object', 'double_2_ascii')
 
 my_output.SetFilename('Mitral_soma_Vm.txt')
 
+# my_output.SetHeader("# time CGR1 CGR2 CGR3 CGR4 CGR5 CGR6")
+
 # this adds to output to the output object
+my_output.NoTimeStep(1)
 my_output.AddOutput('/cells/CellGroup_1/CellGroup_1_0/Seg0_soma', 'Vm')
 my_output.AddOutput('/cells/CellGroup_2/CellGroup_2_0/Seg0_soma', 'Vm')
 my_output.AddOutput('/cells/CellGroup_3/CellGroup_3_0/Seg0_soma', 'Vm')
