@@ -45,47 +45,48 @@ compartmentnumber_list_1 = [ "88", "96", "100", "26", "12", "18", "11", "45", "2
 for index in range(20):
   my_model_container.SetParameter( "/cells/CellGroup_1/CellGroup_1_0/Seg1_apic_%s" % compartmentnumber_list_1[index], 'INJECT', input_CG1)
 
-input_CG2 = 0.01e-09
-compartmentnumber_list_2 = [ "105", "98", "93", "117", "116", "115", "111", "35", "76", "77", "112", "73", "45", "84", "66", "49", "48", "18", "43", "42"]
+# input_CG2 = 0.01e-09
+# compartmentnumber_list_2 = [ "105", "98", "93", "117", "116", "115", "111", "35", "76", "77", "112", "73", "45", "84", "66", "49", "48", "18", "43", "42"]
 
-for index in range(20):
-  my_model_container.SetParameter( "/cells/CellGroup_2/CellGroup_2_0/Seg1_apic_%s" % compartmentnumber_list_2[index], 'INJECT', input_CG2)
+# for index in range(20):
+#  my_model_container.SetParameter( "/cells/CellGroup_2/CellGroup_2_0/Seg1_apic_%s" % compartmentnumber_list_2[index], 'INJECT', input_CG2)
 
-input_CG3 = 0.01e-09
-compartmentnumber_list_3 = [ "32", "31", "37", "23", "22", "24", "20", "21", "28", "18", "17", "16", "14", "13", "29", "36", "35", "33", "34", "27"]
+# input_CG3 = 0.01e-09
+# compartmentnumber_list_3 = [ "32", "31", "37", "23", "22", "24", "20", "21", "28", "18", "17", "16", "14", "13", "29", "36", "35", "33", "34", "27"]
 
-for index in range(20):
-  my_model_container.SetParameter( "/cells/CellGroup_3/CellGroup_3_0/Seg1_apic_%s" % compartmentnumber_list_3[index], 'INJECT', input_CG3)
+# for index in range(20):
+#  my_model_container.SetParameter( "/cells/CellGroup_3/CellGroup_3_0/Seg1_apic_%s" % compartmentnumber_list_3[index], 'INJECT', input_CG3)
 
-input_CG4 = 0.01e-09
-compartmentnumber_list_4 = [ "24", "12", "13", "17", "18", "15", "7", "8", "6", "9", "27", "26", "25", "23", "22", "21", "20", "19", "28", "16"]
+# input_CG4 = 0.01e-09
+# compartmentnumber_list_4 = [ "24", "12", "13", "17", "18", "15", "7", "8", "6", "9", "27", "26", "25", "23", "22", "21", "20", "19", "28", "16"]
 
-for index in range(20):
-  my_model_container.SetParameter( "/cells/CellGroup_4/CellGroup_4_0/Seg1_apic_%s" % compartmentnumber_list_4[index], 'INJECT', input_CG4)
+# for index in range(20):
+#  my_model_container.SetParameter( "/cells/CellGroup_4/CellGroup_4_0/Seg1_apic_%s" % compartmentnumber_list_4[index], 'INJECT', input_CG4)
 
-input_CG5 = 0.01e-09
-compartmentnumber_list_5 = [ "38", "36", "6", "4", "34", "5", "18", "19", "11", "12", "13", "8", "21", "26", "24", "23", "27", "32", "30", "17"]
+# input_CG5 = 0.01e-09
+# compartmentnumber_list_5 = [ "38", "36", "6", "4", "34", "5", "18", "19", "11", "12", "13", "8", "21", "26", "24", "23", "27", "32", "30", "17"]
 
-for index in range(20):
-  my_model_container.SetParameter( "/cells/CellGroup_5/CellGroup_5_0/Seg1_apic_%s" % compartmentnumber_list_5[index], 'INJECT', input_CG5)
+# for index in range(20):
+#  my_model_container.SetParameter( "/cells/CellGroup_5/CellGroup_5_0/Seg1_apic_%s" % compartmentnumber_list_5[index], 'INJECT', input_CG5)
 
-input_CG6 = 0.01e-09
-compartmentnumber_list_6 = [ "3", "20", "16", "22", "17", "21", "19", "18", "4", "5", "6", "7", "10", "9", "8", "11", "12", "13", "14", "15"]
+# input_CG6 = 0.01e-09
+# compartmentnumber_list_6 = [ "3", "20", "16", "22", "17", "21", "19", "18", "4", "5", "6", "7", "10", "9", "8", "11", "12", "13", "14", "15"]
 
-for index in range(20):
-  my_model_container.SetParameter( "/cells/CellGroup_6/CellGroup_6_0/Seg1_apic_%s" % compartmentnumber_list_6[index], 'INJECT', input_CG6)
+# for index in range(20):
+#  my_model_container.SetParameter( "/cells/CellGroup_6/CellGroup_6_0/Seg1_apic_%s" % compartmentnumber_list_6[index], 'INJECT', input_CG6)
 
 
 # Create a solver, in this case heccer
 my_heccer = scheduler.CreateSolver('My solver', 'heccer', verbose=False)
 
 # Sets the element of the model to run from
+# my_heccer.SetModelName('/cells')
 my_heccer.SetModelName('/cells/CellGroup_1/CellGroup_1_0')
-my_heccer.SetModelName('/cells/CellGroup_2/CellGroup_2_0')
-my_heccer.SetModelName('/cells/CellGroup_3/CellGroup_3_0')
-my_heccer.SetModelName('/cells/CellGroup_4/CellGroup_4_0')
-my_heccer.SetModelName('/cells/CellGroup_5/CellGroup_5_0')
-my_heccer.SetModelName('/cells/CellGroup_6/CellGroup_6_0')
+# my_heccer.SetModelName('/cells/CellGroup_2/CellGroup_2_0')
+# my_heccer.SetModelName('/cells/CellGroup_3/CellGroup_3_0')
+# my_heccer.SetModelName('/cells/CellGroup_4/CellGroup_4_0')
+# my_heccer.SetModelName('/cells/CellGroup_5/CellGroup_5_0')
+# my_heccer.SetModelName('/cells/CellGroup_6/CellGroup_6_0')
 
 # set the timestep for the entire scheduler (solvers, inputs and outputs)
 my_heccer.SetTimeStep(2e-05)
@@ -96,18 +97,18 @@ my_heccer.SetTimeStep(2e-05)
 #
 my_output = scheduler.CreateOutput('My output object', 'double_2_ascii')
 
-my_output.SetFilename('Mitral_soma_Vm.txt')
+my_output.SetFilename('CG1_Mitral_soma_Vm.txt')
 
 # my_output.SetHeader("# time CGR1 CGR2 CGR3 CGR4 CGR5 CGR6")
 
 # this adds to output to the output object
 my_output.NoTimeStep(1)
 my_output.AddOutput('/cells/CellGroup_1/CellGroup_1_0/Seg0_soma', 'Vm')
-my_output.AddOutput('/cells/CellGroup_2/CellGroup_2_0/Seg0_soma', 'Vm')
-my_output.AddOutput('/cells/CellGroup_3/CellGroup_3_0/Seg0_soma', 'Vm')
-my_output.AddOutput('/cells/CellGroup_4/CellGroup_4_0/Seg0_soma', 'Vm')
-my_output.AddOutput('/cells/CellGroup_5/CellGroup_5_0/Seg0_soma', 'Vm')
-my_output.AddOutput('/cells/CellGroup_6/CellGroup_6_0/Seg0_soma', 'Vm')
+# my_output.AddOutput('/cells/CellGroup_2/CellGroup_2_0/Seg0_soma', 'Vm')
+# my_output.AddOutput('/cells/CellGroup_3/CellGroup_3_0/Seg0_soma', 'Vm')
+# my_output.AddOutput('/cells/CellGroup_4/CellGroup_4_0/Seg0_soma', 'Vm')
+# my_output.AddOutput('/cells/CellGroup_5/CellGroup_5_0/Seg0_soma', 'Vm')
+# my_output.AddOutput('/cells/CellGroup_6/CellGroup_6_0/Seg0_soma', 'Vm')
 
 # an alternate way is to add output to the top level SPPy object
 # This is useful when interfacing with a GUI
