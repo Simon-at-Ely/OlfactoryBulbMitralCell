@@ -70,7 +70,7 @@
                     <inf>
                         <parameterised_hh type="sigmoid" expr="A/(1 + exp(k*(v-d)))">
                             <parameter name="A" value="1"/>
-                            <parameter name="k" value="-(0.071428571)"/>
+                            <parameter name="k" value="-0.071428571"/>
                             <parameter name="d" value="17.5"/>
                         </parameterised_hh>
                     </inf>
@@ -102,7 +102,7 @@
                     <inf>
                         <parameterised_hh type="sigmoid" expr="A/(1 + exp(k*(v-d)))">
                             <parameter name="A" value="1"/>
-                            <parameter name="k" value="(0.166666666)"/>
+                            <parameter name="k" value="0.166666666"/>
                             <parameter name="d" value="-41.7"/>
                         </parameterised_hh>
                     </inf>
