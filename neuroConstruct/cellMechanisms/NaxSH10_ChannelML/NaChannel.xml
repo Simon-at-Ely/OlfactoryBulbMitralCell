@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<channelml xmlns="http://morphml.org/channelml/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:meta="http://morphml.org/metadata/schema" xsi:schemaLocation="http://morphml.org/channelml/schema  ../../Schemata/v1.6/Level2/ChannelML_v1.6.xsd" units="Physiological Units">
+
+    <meta:notes>ChannelML file containing a single Channel description</meta:notes>
+
+    <ion name="na" charge="1" default_erev="50"/>                                                                                                              <!-- phys units: mV -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <channel_type name="NaxSH10_ChannelML" density="yes">
+        
+        <status value="stable">
+            <meta:comment>Agreement of generated NEURON and GENESIS to original NEURON mod. Compared voltage and n traces on single comp with current pulse</meta:comment>
+            <meta:contributor>
+                <meta:name>Padraig Gleeson</meta:name>
+            </meta:contributor>
+        </status>
+
+        <meta:notes>...</meta:notes>
+        
+        <meta:authorList>
+            <meta:modelTranslator>
+                <meta:name>Padraig Gleeson</meta:name>
+                <meta:institution>UCL</meta:institution>    
+                <meta:email>p.gleeson - at - ucl.ac.uk</meta:email>
+            </meta:modelTranslator>
+        </meta:authorList>
+
+
+
+        <current_voltage_relation>
+            <ohmic ion="na">
+                <conductance default_gmax="120">                                                                                                             <!-- phys units: mS/cm2 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <rate_adjustments>
+                        <q10_settings q10_factor="2" experimental_temp="24"/>
+                    </rate_adjustments>
+
+                    <gate power="3">
+                        <state name="m" fraction="1"/>
+                    </gate>
+                    <gate power="1">
+                        <state name="h" fraction="1"/>
+                    </gate>
+                </conductance>
+            </ohmic>
+        </current_voltage_relation>
+        
+        
+        <hh_gate state="m">
+            <transition>
+                <voltage_gate>
+                    <alpha>
+                        <parameterised_hh type="linoid" expr="A*(k*(v-d))/(1 - exp(-(k*(v-d))))">
+                            <parameter name="A" value="2.880000018"/>
+                            <parameter name="k" value="0.1388888888"/>
+                            <parameter name="d" value="-20"/>
+                        </parameterised_hh>
+                    </alpha>
+                    <beta>
+                        <parameterised_hh type="linoid" expr="A*(k*(v-d))/(1 - exp(-(k*(v-d))))">
+                            <parameter name="A" value="0.892800005"/>
+                            <parameter name="k" value="-0.1388888888"/>
+                            <parameter name="d" value="-20"/>
+                        </parameterised_hh>
+                    </beta>
+                    
+                    <tau>
+                                                                                                                                <!-- Note: this puts a lower limit on tau. It can be a function of alpha and beta -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <generic_equation_hh expr="1/( (alpha + beta) * temp_adj_m ) &lt; 0.02 ? (0.02 * temp_adj_m) : 1/(alpha + beta)  "/>
+                    </tau>
+                    
+                </voltage_gate>
+            </transition>
+        </hh_gate>
+        
+        <hh_gate state="h">
+            <transition>
+                <voltage_gate>
+                    <alpha>
+                        <parameterised_hh type="linoid" expr="A*(k*(v-d))/(1 - exp(-(k*(v-d))))">
+                            <parameter name="A" value="0.045"/>
+                            <parameter name="k" value="0.6666666667"/>
+                            <parameter name="d" value="-35"/>
+                        </parameterised_hh>
+                    </alpha>
+                    <beta>
+                        <parameterised_hh type="linoid" expr="A*(k*(v-d))/(1 - exp(-(k*(v-d))))">
+                            <parameter name="A" value="0.015"/>
+                            <parameter name="k" value="-0.6666666667"/>
+                            <parameter name="d" value="-35"/>
+                        </parameterised_hh>
+                    </beta>
+                    <tau>
+                                                                                                                                <!-- Note: this puts a lower limit on tau. It can be a function of alpha and beta -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <generic_equation_hh expr="1/( (alpha + beta) * temp_adj_h ) &lt; 0.5 ? (0.5 * temp_adj_h) : 1/(alpha + beta)  "/>
+                    </tau>
+                    <inf>
+                                                                                                                                <!-- Note: lots of brackets due to way GENESIS parses expressions...-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<parameterised_hh type="sigmoid" expr="A/(1 + exp(k*(v-d)))">
+				<parameter name="A" value="1"/>
+				<parameter name="k" value="0.25"/>
+				<parameter name="d" value="-40"/>
+                        </parameterised_hh>
+                    </inf>
+                </voltage_gate>
+            </transition>
+        </hh_gate>
+        
+        
+        <impl_prefs>
+            <table_settings max_v="100" min_v="-100" table_divisions="2000"/>
+        </impl_prefs>
+        
+        
+    </channel_type>
+</channelml>

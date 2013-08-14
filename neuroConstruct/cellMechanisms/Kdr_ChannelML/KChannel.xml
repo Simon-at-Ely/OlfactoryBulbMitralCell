@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Example of HH K conductance specified in ChannelML.
+    Based on Michael Hines's initial proposal.
+-->
+
+<channelml xmlns="http://morphml.org/channelml/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:meta="http://morphml.org/metadata/schema" xsi:schemaLocation="http://morphml.org/channelml/schema  ../../Schemata/v1.6/Level2/ChannelML_v1.6.xsd" units="Physiological Units">
+
+    <meta:notes>ChannelML file containing a single Channel description</meta:notes>
+
+    <ion name="k" default_erev="-90.0" charge="1"/>          <!-- phys units: mV -->
+
+
+
+    <channel_type name="Kdr_ChannelML" density="yes">
+        
+        <status value="in_progress">
+            <meta:comment>Equations adapted from paper for modern convention of external potential being zero</meta:comment>
+            <meta:contributor>
+                <meta:name>Padraig Gleeson</meta:name>
+            </meta:contributor>
+        </status>
+
+        <meta:notes>Mitral cell K DR channel</meta:notes>
+
+
+        <meta:neuronDBref>
+            <meta:modelName>K channels</meta:modelName>
+            <meta:uri>http://senselab.med.yale.edu/senselab/NeuronDB/channelGene2.htm#table3</meta:uri>
+        </meta:neuronDBref>
+
+        
+        <current_voltage_relation>
+            <ohmic ion="k">
+                <conductance default_gmax="36">          <!-- phys units: mS/cm2-->
+
+                    
+                    
+                    <rate_adjustments>
+                        <q10_settings q10_factor="3" experimental_temp="24"/>
+                    </rate_adjustments>
+
+                    <gate power="1">
+                        <state name="m" fraction="1"/>
+                    </gate>  
+                </conductance>
+            </ohmic>
+        </current_voltage_relation>
+        
+        
+        <hh_gate state="m">
+            <transition>
+                <voltage_gate>
+                    <alpha>
+                                <!-- Note: type attr determines how A,k,d are used in parameterised_hh, expr is just for completeness-->
+
+
+                        <parameterised_hh type="exponential" expr="A*exp(k*(v-d))">
+                            <parameter name="A" value="1"/>
+                            <parameter name="k" value="0.055"/>
+                            <parameter name="d" value="-50"/>
+                        </parameterised_hh>
+                    </alpha>
+                    <beta>
+                        <parameterised_hh type="exponential" expr="A*exp(k*(v-d))">
+                            <parameter name="A" value="1"/>
+                            <parameter name="k" value="0.0275"/>
+                            <parameter name="d" value="-50"/>
+                        </parameterised_hh>
+                    </beta>
+                    
+                    
+                    <tau>
+                        <generic_equation_hh expr="beta/(0.0035 *( 1 +alpha))"/>
+                    </tau>
+                    
+                    <inf>
+                        <parameterised_hh type="sigmoid" expr="A/(1 + exp(k*(v-d)))">
+                            <parameter name="A" value="1"/>
+                            <parameter name="k" value="-0.1"/>
+                            <parameter name="d" value="21"/>
+                        </parameterised_hh>
+                    </inf>
+                    
+                    
+                </voltage_gate>
+            </transition>
+        </hh_gate>
+        
+        
+        <impl_prefs>
+            <table_settings max_v="100" min_v="-100" table_divisions="400"/>
+        </impl_prefs>
+        
+        
+    </channel_type>
+</channelml>
