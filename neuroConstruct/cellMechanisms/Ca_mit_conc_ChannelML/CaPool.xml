@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<channelml xmlns="http://morphml.org/channelml/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:meta="http://morphml.org/metadata/schema" xsi:schemaLocation="http://morphml.org/channelml/schema   ../../Schemata/v1.6/Level2/ChannelML_v1.6.xsd" units="SI Units">
+<channelml xmlns="http://morphml.org/channelml/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+           xmlns:meta="http://morphml.org/metadata/schema" 
+           xsi:schemaLocation="http://morphml.org/channelml/schema   ../../Schemata/v1.6/Level2/ChannelML_v1.6.xsd" 
+           units="SI Units">
 
 	<meta:notes>A channel from Bhalla, U.S.and Bower, J.M. Exploring parameter space in detailed single neuron models:
     simulations of the mitral and granule cells of the olfactory bulb</meta:notes>
@@ -24,15 +27,12 @@
 <meta:pubmedRef>http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=7688798&amp;dopt=Abstract</meta:pubmedRef>
 		</meta:publication>
         
-        <ion_species>ca</ion_species>
+        <ion_species name="ca"/>
         
-        <decaying_pool_model>
-            <resting_conc>5.2e-6</resting_conc>
-            <decay_constant>0.01</decay_constant>
+        
+        <decaying_pool_model resting_conc ="1e-5" decay_constant="0.01">
             
-            <pool_volume_info>
-                <shell_thickness>0.00001</shell_thickness>
-            </pool_volume_info>
+            <pool_volume_info shell_thickness = "1e-7"/>
             
         </decaying_pool_model>
         
