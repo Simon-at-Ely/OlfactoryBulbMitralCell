@@ -22,7 +22,7 @@
         <meta:authorList>
             <meta:modelTranslator>
                 <meta:name>Simon O'Connor</meta:name>
-                <meta:institution>University of Cardiff</meta:institution>
+                <meta:institution>University of Hertfordshire</meta:institution>
                 <meta:email>simon.oconnor@btinternet.com</meta:email>
             </meta:modelTranslator>
         </meta:authorList>
@@ -48,18 +48,22 @@
                 <closed_state id="m0"/>
                 <open_state id="m" fraction="1"/>
                      
-                <transition name="alpha" from="m0" to="m" expr_form="sigmoid" rate="7500" scale="-0.007" midpoint="0.013" />
-                <transition name="beta" from="m" to="m0" expr_form="sigmoid" rate="1650" scale="0.004" midpoint="0.014" />
-                    
+                <!--transition name="alpha" from="m0" to="m" expr_form="sigmoid" rate="7500" scale="-142.85714285714286" midpoint="0.013" /-->
+		<transition name="alpha" from="m0" to="m" expr_form="sigmoid" rate="7500" scale="-0.007" midpoint="0.013" />
+		<!-- transition name="beta" from="m" to="m0" expr_form="sigmoid" rate="1650" scale="250" midpoint="0.014" /-->
+		<transition name="beta" from="m" to="m0" expr_form="sigmoid" rate="1650" scale="0.004" midpoint="0.014" />
+
             </gate>
         
             <gate name="h" instances="1">
                 <closed_state id="h0"/>
                 <open_state id="h" fraction="1"/>
                      
-                <transition name="alpha" from="h0" to="h" expr_form="sigmoid" rate="6.800" scale="0.012" midpoint="-0.030" />
-                <transition name="beta" from="h" to="h0" expr_form="sigmoid" rate="60" scale="-0.011" midpoint="0.0" />
-                    
+                <!-- transition name="alpha" from="h0" to="h" expr_form="sigmoid" rate="6.800" scale="83.333333333333" midpoint="-0.030" /-->
+		<transition name="alpha" from="h0" to="h" expr_form="sigmoid" rate="6.800" scale="0.012" midpoint="-0.030" />
+		<!--transition name="beta" from="h" to="h0" expr_form="sigmoid" rate="60" scale="-90.90909090909" midpoint="0.0" /-->
+		<transition name="beta" from="h" to="h0" expr_form="sigmoid" rate="60" scale="-0.011" midpoint="0.0" />
+
             </gate>
         </current_voltage_relation>
         

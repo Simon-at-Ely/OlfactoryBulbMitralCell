@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<channelml xmlns="http://morphml.org/channelml/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<channelml xmlns="http://morphml.org/channelml/schema" 
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
            xmlns:meta="http://morphml.org/metadata/schema" 
-           xsi:schemaLocation="http://morphml.org/channelml/schema   ../../Schemata/v1.6/Level2/ChannelML_v1.6.xsd" 
+           xsi:schemaLocation="http://morphml.org/channelml/schema   http://sourceforge.net/p/neuroml/code/1087/tree/trunk/web/NeuroMLFiles/Schemata/v1.8.1/Level2/ChannelML_v1.8.1.xsd?format=raw" 
            units="SI Units">
 
 	<meta:notes>A channel from Bhalla, U.S.and Bower, J.M. Exploring parameter space in detailed single neuron models:
-    simulations of the mitral and granule cells of the olfactory bulb</meta:notes>
+	simulations of the mitral and granule cells of the olfactory bulb</meta:notes>
     
     <ion name="ca" charge="2" role="SignallingSubstance">  
         <meta:notes>Signifies that the ion is involved in a process which alters its concentration</meta:notes>
@@ -21,18 +22,18 @@
     
         <meta:notes>An expontially decaying pool of calcium</meta:notes>
         
-		<meta:publication>
-			<meta:fullTitle>Bhalla, U.S.and Bower, J.M. Exploring parameter space in detailed single neuron models:
-    simulations of the mitral and granule cells of the olfactory bulb. J Neurophysiol, Nov 1993; 69: 1948 - 1965</meta:fullTitle>
-<meta:pubmedRef>http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=7688798&amp;dopt=Abstract</meta:pubmedRef>
-		</meta:publication>
+	<meta:publication>
+	  <meta:fullTitle>Bhalla, U.S.and Bower, J.M. Exploring parameter space in detailed single neuron models:
+	  simulations of the mitral and granule cells of the olfactory bulb. J Neurophysiol, Nov 1993; 69: 1948 - 1965</meta:fullTitle>
+	  <meta:pubmedRef>http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=7688798&amp;dopt=Abstract</meta:pubmedRef>
+	</meta:publication>
         
         <ion_species name="ca"/>
         
         
-        <decaying_pool_model resting_conc ="1e-5" decay_constant="0.01">
+        <decaying_pool_model resting_conc ="5.2e-6" decay_constant="0.01">
             
-            <pool_volume_info shell_thickness = "1e-7"/>
+            <pool_volume_info shell_thickness = "5.0e-6"/>
             
         </decaying_pool_model>
         

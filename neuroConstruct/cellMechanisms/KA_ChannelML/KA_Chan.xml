@@ -1,115 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<channelml xmlns="http://morphml.org/channelml/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:meta="http://morphml.org/metadata/schema" xsi:schemaLocation="http://morphml.org/channelml/schema  http://www.neuroml.org/NeuroMLValidator/NeuroMLFiles/Schemata/v1.8.1/Level2/ChannelML_v1.8.1.xsd" units="Physiological Units">
+<channelml xmlns="http://morphml.org/channelml/schema" 
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	   xmlns:meta="http://morphml.org/metadata/schema" 
+	   xsi:schemaLocation="http://morphml.org/channelml/schema  http://sourceforge.net/p/neuroml/code/1087/tree/trunk/web/NeuroMLFiles/Schemata/v1.8.1/Level2/ChannelML_v1.8.1.xsd?format=raw" 
+	   units="Physiological Units">
 
-    <meta:notes>K-A current for Mitral Cells from Wang et al (1996) M.Migliore Jan. 2002
-    Note, the values used here are based on the Neuron Mod scripts accompanying Migliore et al (2005)</meta:notes>
-    
-    <ion name="k" charge="1" default_erev="-90"/>  
-    
+    <meta:notes>ChannelML file containing a single Channel description</meta:notes>
+
+
     <channel_type name="KA_ChannelML" density="yes">
-    
-        <meta:notes>A-type K channel, with rate equations expressed in tau and inf form</meta:notes>
+
+        <status value="stable">
+            <meta:comment>K-A current for Mitral Cells from Wang et al (1996) M.Migliore Jan. 2002
+	    Note, the values used here are based on the Neuron Mod scripts accompanying Migliore et al (2005)</meta:comment>
+            <meta:contributor>
+                <meta:name>Simon O'Connor</meta:name>
+            </meta:contributor>
+        </status>
+
+	<meta:notes>A-type K channel, with rate equations expressed in tau and inf form</meta:notes>
         
         <meta:authorList>
             <meta:modelTranslator>
                 <meta:name>Simon O'Connor</meta:name>
-                <meta:institution>University of Cardiff</meta:institution>    
+                <meta:institution>University of Hertfordshire</meta:institution>    
                 <meta:email>simon.oconnor@btinternet.com</meta:email>
             </meta:modelTranslator>
         </meta:authorList>
             
         <meta:publication>
             <meta:fullTitle>Migliore, M., Hines, M.L., Shepherd, G.M. The Role of Distal Dendritic Gap Junctions in Synchronization of Mitral Cell Axonal Output J.Comput. Neurosci. 18, 151-161, 2005</meta:fullTitle>
-	    <meta:pubmedRef>http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=15714267</meta:pubmedRef>
+	    <meta:pubmedRef>www.ncbi.nlm.nih.gov/pubmed/15714267</meta:pubmedRef>
         </meta:publication>        
    
         <meta:neuronDBref>
             <meta:modelName>K channels</meta:modelName>
-            <meta:uri>http://senselab.med.yale.edu/senselab/NeuronDB/channelGene2.htm#table3</meta:uri>
+            <meta:uri>http://senselab.med.yale.edu/neuronDB/channelGene2.aspx#table3</meta:uri>
         </meta:neuronDBref>
 
         
-        <current_voltage_relation>
-            <ohmic ion="k">
-                <conductance default_gmax="2">   
-                    <rate_adjustments>
-                        <q10_settings q10_factor="3" experimental_temp="24"/>
-                        <offset value="0"/>
-                    </rate_adjustments>
-                    <gate power="1">
-                        <state name="m" fraction="1"/>
-                    </gate>
-                    <gate power="1">
-                        <state name="h" fraction="1"/>
-                    </gate>
-                </conductance>
-            </ohmic>
-        </current_voltage_relation>
-        
-        
-        <hh_gate state="m">
-            <transition>
-                <voltage_gate>
-			  <alpha>
-				<parameterised_hh type="exponential" expr="A*exp(k*(v-d))">
-				    <parameter name="A" value="1"/>
-				    <parameter name="k" value="0.1"/>
-				    <parameter name="d" value="-45"/>
-				</parameterised_hh>
-			  </alpha>
-			  <beta>
-				<parameterised_hh type="exponential" expr="A*exp(k*(v-d))">
-				    <parameter name="A" value="1"/>
-				    <parameter name="k" value="0.075"/>
-				    <parameter name="d" value="-45"/>
-				</parameterised_hh>
-			  </beta>
-                    <tau>
-                        <generic_equation_hh expr="beta / (0.04 *(1+alpha))"/>
-                    </tau>
-                    <inf>
-                        <parameterised_hh type="sigmoid" expr="A/(1 + exp(k*(v-d)))">
-                            <parameter name="A" value="1"/>
-                            <parameter name="k" value="-0.071428571"/>
-                            <parameter name="d" value="17.5"/>
-                        </parameterised_hh>
-                    </inf>
-                </voltage_gate>
-            </transition>
-        </hh_gate>
-        
-        
-        <hh_gate state="h">
-            <transition>
-                <voltage_gate>
-			  <alpha>
-				<parameterised_hh type="exponential" expr="A*exp(k*(v-d))">
-				    <parameter name="A" value="1"/>
-				    <parameter name="k" value="0.2"/>
-				    <parameter name="d" value="-70"/>
-				</parameterised_hh>
-			  </alpha>
-			  <beta>
-				<parameterised_hh type="exponential" expr="A*exp(k*(v-d))">
-				    <parameter name="A" value="1"/>
-				    <parameter name="k" value="0.198"/>
-				    <parameter name="d" value="-70"/>
-				</parameterised_hh>
-			  </beta>
-                    <tau>
-                        <generic_equation_hh expr="beta / (0.018 *(1+alpha))"/>
-                    </tau>
-                    <inf>
-                        <parameterised_hh type="sigmoid" expr="A/(1 + exp(k*(v-d)))">
-                            <parameter name="A" value="1"/>
-                            <parameter name="k" value="0.166666666"/>
-                            <parameter name="d" value="-41.7"/>
-                        </parameterised_hh>
-                    </inf>
-                </voltage_gate>
-            </transition>
-        </hh_gate>
+        <current_voltage_relation cond_law="ohmic" 
+                                  ion="k" 
+                                  default_gmax="2" 
+                                  default_erev="-90"
+                                  charge="1"
+                                  fixed_erev="yes">
 
+             <q10_settings q10_factor="3" experimental_temp="24"/>
+             <offset value="0"/>
+
+             <gate name="m" instances="1">
+                <closed_state id="m0"/>
+                <open_state id="m" fraction="1"/>
+
+                <transition name="alpha" from="m0" to="m" expr_form="exponential" rate="1" scale="10" midpoint="-45" /> 
+		<!-- A*exp(k*(v-d)) A = 1 k 0.1 d -45-->
+                <transition name="beta" from="m" to="m0" expr_form="exponential" rate="1" scale="13.3333" midpoint="-45" />
+		<!-- A*exp(k*(v-d)) A = 1 k = 0.075  d = -45 -->
+
+                <time_course  name="tau" from="m0" to="m" expr_form="generic"
+                              expr="beta / (0.04 *(1+alpha))"/>
+                <steady_state name="inf" from="m0" to="m" expr_form="sigmoid"
+                              rate="1" scale="-14" midpoint="17.5" /> 
+			      <!-- A/(1 + exp(k*(v-d))) A = 1 k = -0.071428571 d = 17.5-->
         
+             </gate>
+
+            <gate name="h" instances="1">
+                <closed_state id="h0"/>
+                <open_state id="h" fraction="1"/>
+		
+                <transition name="alpha" from="h0" to="h" expr_form="exponential" rate="1" scale="5" midpoint="-70" />
+		<!-- A*exp(k*(v-d)) A = 1 k = 0.2 d = -70 -->
+                <transition name="beta" from="h" to="h0" expr_form="exponential" rate="1" scale="5.0505" midpoint="-70" />
+		<!-- A*exp(k*(v-d)) A = 1 k = 0.198 d = -70 -->
+                <time_course  name="tau" from="h0" to="h" expr_form="generic"
+                              expr="beta / (0.018 *(1+alpha))"/>
+                <steady_state name="inf" from="h0" to="h" expr_form="sigmoid"
+                              rate="1" scale="6" midpoint="-41.7" />
+		<!-- A/(1 + exp(k*(v-d))) A = 1 k = 0.166666666 d = -41.7 -->
+
+	  </gate>
+        </current_voltage_relation>        
+
     </channel_type>
 </channelml>

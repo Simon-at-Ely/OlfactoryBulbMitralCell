@@ -1,35 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<channelml xmlns="http://morphml.org/channelml/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:meta="http://morphml.org/metadata/schema" xsi:schemaLocation="http://morphml.org/channelml/schema  ../../Schemata/v1.6/Level2/ChannelML_v1.6.xsd" units="Physiological Units">
+<channelml xmlns="http://morphml.org/channelml/schema" 
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	   xmlns:meta="http://morphml.org/metadata/schema" 
+	   xsi:schemaLocation="http://morphml.org/channelml/schema  http://sourceforge.net/p/neuroml/code/1087/tree/trunk/web/NeuroMLFiles/Schemata/v1.8.1/Level2/ChannelML_v1.8.1.xsd?format=raw" 
+	   units="Physiological Units">
 
     <meta:notes>ChannelML file containing a single Channel description</meta:notes>
-
-    <ion name="na" charge="1" default_erev="50"/>                                                                                                              <!-- phys units: mV -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     <channel_type name="NaxSH0_ChannelML" density="yes">
@@ -41,7 +17,7 @@
             </meta:contributor>
         </status>
 
-        <meta:notes>...</meta:notes>
+        <meta:notes>Na Channel</meta:notes>
         
         <meta:authorList>
             <meta:modelTranslator>
@@ -53,188 +29,44 @@
 
 
 
-        <current_voltage_relation>
-            <ohmic ion="na">
-                <conductance default_gmax="120">                                                                                                             <!-- phys units: mS/cm2 -->
+        <current_voltage_relation cond_law="ohmic" 
+                                  ion="na" 
+                                  default_gmax="120" 
+                                  default_erev="50"
+                                  charge="1"
+                                  fixed_erev="yes">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    <rate_adjustments>
                         <q10_settings q10_factor="2" experimental_temp="24"/>
-                    </rate_adjustments>
 
-                    <gate power="3">
-                        <state name="m" fraction="1"/>
-                    </gate>
-                    <gate power="1">
-                        <state name="h" fraction="1"/>
-                    </gate>
-                </conductance>
-            </ohmic>
-        </current_voltage_relation>
-        
-        
-        <hh_gate state="m">
-            <transition>
-                <voltage_gate>
-                    <alpha>
-                        <parameterised_hh type="linoid" expr="A*(k*(v-d))/(1 - exp(-(k*(v-d))))">
-                            <parameter name="A" value="2.880000018"/>
-                            <parameter name="k" value="0.1388888888"/>
-                            <parameter name="d" value="-30"/>
-                        </parameterised_hh>
-                    </alpha>
-                    <beta>
-                        <parameterised_hh type="linoid" expr="A*(k*(v-d))/(1 - exp(-(k*(v-d))))">
-                            <parameter name="A" value="0.892800005"/>
-                            <parameter name="k" value="-0.1388888888"/>
-                            <parameter name="d" value="-30"/>
-                        </parameterised_hh>
-                    </beta>
+            <gate name="m" instances="3">
+                <closed_state id="m0"/>
+                <open_state id="m" fraction="1"/>
+
+                <transition name="alpha" from="m0" to="m" expr_form="exp_linear" rate="2.880000018" scale="7.2" midpoint="-30" />
+		<!-- A*(k*(v-d))/(1 - exp(-(k*(v-d)))) A = 2.880000018 k = 0.1388888888 d -30 -->
+                <transition name="beta" from="m" to="m0" expr_form="exp_linear" rate="0.892800005" scale="-7.2" midpoint="-30" />
+		<!-- A*(k*(v-d))/(1 - exp(-(k*(v-d)))) A = 0.892800005 k = -0.1388888888 d = -30 -->
                     
-                    <tau>
-                                                                                                                                <!-- Note: this puts a lower limit on tau. It can be a function of alpha and beta -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        <generic_equation_hh expr="1/( (alpha + beta) * temp_adj_m ) &lt; 0.02 ? (0.02 * temp_adj_m) : 1/(alpha + beta)  "/>
-                    </tau>
-                    
-                </voltage_gate>
-            </transition>
-        </hh_gate>
+                <time_course  name="tau" from="m0" to="m" expr_form="generic"
+                              expr="1/( (alpha + beta) * temp_adj_m ) &lt; 0.02 ? (0.02 * temp_adj_m) : 1/(alpha + beta)  "/>
+            </gate>
         
-        <hh_gate state="h">
-            <transition>
-                <voltage_gate>
-                    <alpha>
-                        <parameterised_hh type="linoid" expr="A*(k*(v-d))/(1 - exp(-(k*(v-d))))">
-                            <parameter name="A" value="0.045"/>
-                            <parameter name="k" value="0.6666666667"/>
-                            <parameter name="d" value="-45"/>
-                        </parameterised_hh>
-                    </alpha>
-                    <beta>
-                        <parameterised_hh type="linoid" expr="A*(k*(v-d))/(1 - exp(-(k*(v-d))))">
-                            <parameter name="A" value="0.015"/>
-                            <parameter name="k" value="-0.6666666667"/>
-                            <parameter name="d" value="-45"/>
-                        </parameterised_hh>
-                    </beta>
-                    <tau>
-                                                                                                                                <!-- Note: this puts a lower limit on tau. It can be a function of alpha and beta -->
+            <gate name="h" instances="1">
+                <closed_state id="h0"/>
+                <open_state id="h" fraction="1"/>
+                     
+                <transition name="alpha" from="h0" to="h" expr_form="exp_linear" rate="0.045" scale="1.5" midpoint="-45" />
+		<!-- A*(k*(v-d))/(1 - exp(-(k*(v-d)))) A = 0.045 k = 0.6666666667 d = -45-->
+                <transition name="beta" from="h" to="h0" expr_form="exp_linear" rate="0.015" scale="-1.5" midpoint="-45" /> 
+		<!-- A*(k*(v-d))/(1 - exp(-(k*(v-d)))) A = 0.015 k = -0.6666666667 d = -45 -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        <generic_equation_hh expr="1/( (alpha + beta) * temp_adj_h ) &lt; 0.5 ? (0.5 * temp_adj_h) : 1/(alpha + beta)  "/>
-                    </tau>
-                    <inf>
-                                                                                                                                <!-- Note: lots of brackets due to way GENESIS parses expressions...-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			<parameterised_hh type="sigmoid" expr="A/(1 + exp(k*(v-d)))">
-				<parameter name="A" value="1"/>
-				<parameter name="k" value="0.25"/>
-				<parameter name="d" value="-50"/>
-                        </parameterised_hh>
-                    </inf>
-                </voltage_gate>
-            </transition>
-        </hh_gate>
-        
+                <time_course  name="tau" from="h0" to="h" expr_form="generic"
+                              expr="1/( (alpha + beta) * temp_adj_h ) &lt; 0.5 ? (0.5 * temp_adj_h) : 1/(alpha + beta)  "/>
+                <steady_state name="inf" from="h0" to="h" expr_form="sigmoid"
+                              rate="1" scale="4" midpoint="-50" />
+				<!-- A/(1 + exp(k*(v-d))) A = 1 k = 0.25 d = -50 -->
+		</gate>
+        </current_voltage_relation>        
         
         <impl_prefs>
             <table_settings max_v="100" min_v="-100" table_divisions="2000"/>

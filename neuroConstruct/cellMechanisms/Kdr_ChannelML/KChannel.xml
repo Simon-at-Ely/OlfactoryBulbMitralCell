@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-    Example of HH K conductance specified in ChannelML.
-    Based on Michael Hines's initial proposal.
--->
-
-<channelml xmlns="http://morphml.org/channelml/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:meta="http://morphml.org/metadata/schema" xsi:schemaLocation="http://morphml.org/channelml/schema  ../../Schemata/v1.6/Level2/ChannelML_v1.6.xsd" units="Physiological Units">
+<channelml xmlns="http://morphml.org/channelml/schema" 
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	   xmlns:meta="http://morphml.org/metadata/schema" 
+	   xsi:schemaLocation="http://morphml.org/channelml/schema  http://sourceforge.net/p/neuroml/code/1087/tree/trunk/web/NeuroMLFiles/Schemata/v1.8.1/Level2/ChannelML_v1.8.1.xsd?format=raw" 
+	   units="Physiological Units">
 
     <meta:notes>ChannelML file containing a single Channel description</meta:notes>
-
-    <ion name="k" default_erev="-90.0" charge="1"/>          <!-- phys units: mV -->
-
 
 
     <channel_type name="Kdr_ChannelML" density="yes">
@@ -23,69 +19,39 @@
 
         <meta:notes>Mitral cell K DR channel</meta:notes>
 
-
         <meta:neuronDBref>
             <meta:modelName>K channels</meta:modelName>
-            <meta:uri>http://senselab.med.yale.edu/senselab/NeuronDB/channelGene2.htm#table3</meta:uri>
+            <meta:uri>http://senselab.med.yale.edu/neuronDB/channelGene2.aspx#table3</meta:uri>
         </meta:neuronDBref>
 
+        <current_voltage_relation cond_law="ohmic" 
+                                  ion="kdr" 
+                                  default_gmax="36" 
+                                  default_erev="-77.0"
+                                  charge="1"
+                                  fixed_erev="yes">        
+                    
+            <q10_settings q10_factor="3" experimental_temp="24"/>
+
+            <gate name="m" instances="1">
+                <closed_state id="m0"/>
+                <open_state id="m" fraction="1"/>
+
         
-        <current_voltage_relation>
-            <ohmic ion="k">
-                <conductance default_gmax="36">          <!-- phys units: mS/cm2-->
-
+        
+                <transition name="alpha" from="m0" to="m" expr_form="exponential" rate="1" scale="18.1818181818" midpoint="-50" />
+		<!-- A*exp(k*(v-d)) A = 1 k = 0.055 d = -50 -->
+                <transition name="beta" from="m" to="m0" expr_form="exponential" rate="1" scale="36.3636363636" midpoint="-50" />
+		<!-- A*exp(k*(v-d)) A = 1 k = 0.0275 d = -50 -->
                     
-                    
-                    <rate_adjustments>
-                        <q10_settings q10_factor="3" experimental_temp="24"/>
-                    </rate_adjustments>
+                <time_course  name="tau" from="m0" to="m" expr_form="generic"
+                              expr="beta/(0.0035 *( 1 +alpha))"/>
+                <steady_state name="inf" from="m0" to="m" expr_form="sigmoid"
+                              rate="1" scale="-10" midpoint="21" />
+			      <!-- A/(1 + exp(k*(v-d))) A = 1 k = -0.1 d = 21 -->
 
-                    <gate power="1">
-                        <state name="m" fraction="1"/>
-                    </gate>  
-                </conductance>
-            </ohmic>
+	    </gate>
         </current_voltage_relation>
-        
-        
-        <hh_gate state="m">
-            <transition>
-                <voltage_gate>
-                    <alpha>
-                                <!-- Note: type attr determines how A,k,d are used in parameterised_hh, expr is just for completeness-->
-
-
-                        <parameterised_hh type="exponential" expr="A*exp(k*(v-d))">
-                            <parameter name="A" value="1"/>
-                            <parameter name="k" value="0.055"/>
-                            <parameter name="d" value="-50"/>
-                        </parameterised_hh>
-                    </alpha>
-                    <beta>
-                        <parameterised_hh type="exponential" expr="A*exp(k*(v-d))">
-                            <parameter name="A" value="1"/>
-                            <parameter name="k" value="0.0275"/>
-                            <parameter name="d" value="-50"/>
-                        </parameterised_hh>
-                    </beta>
-                    
-                    
-                    <tau>
-                        <generic_equation_hh expr="beta/(0.0035 *( 1 +alpha))"/>
-                    </tau>
-                    
-                    <inf>
-                        <parameterised_hh type="sigmoid" expr="A/(1 + exp(k*(v-d)))">
-                            <parameter name="A" value="1"/>
-                            <parameter name="k" value="-0.1"/>
-                            <parameter name="d" value="21"/>
-                        </parameterised_hh>
-                    </inf>
-                    
-                    
-                </voltage_gate>
-            </transition>
-        </hh_gate>
         
         
         <impl_prefs>
