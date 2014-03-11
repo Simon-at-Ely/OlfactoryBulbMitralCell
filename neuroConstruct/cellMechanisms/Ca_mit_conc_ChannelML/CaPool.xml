@@ -31,9 +31,15 @@
         <ion_species name="ca"/>
         
         
-        <decaying_pool_model resting_conc ="5.2e-6" decay_constant="0.01">
+        <decaying_pool_model resting_conc ="0.00001" decay_constant="0.01">
+	  
+	    <fixed_pool_info>
+                <!-- this value is divided by the compt area to get the
+conversion factor between current and change in concentration. -->
+                <phi>95.431501</phi>
+            </fixed_pool_info>
             
-            <pool_volume_info shell_thickness = "5.0e-6"/>
+            <!-- pool_volume_info shell_thickness = "5.0e-6"/-->
             
         </decaying_pool_model>
         

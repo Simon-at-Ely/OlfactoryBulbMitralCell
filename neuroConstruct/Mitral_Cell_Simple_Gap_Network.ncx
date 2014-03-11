@@ -1094,11 +1094,11 @@ part of NeuroML or any standardised XML specification. -->
   </void>
   <void property="nativeBlocks">
    <void method="put">
-    <float>-1.0</float>
+    <float>1.0</float>
     <string></string>
    </void>
    <void method="put">
-    <float>1.0</float>
+    <float>-1.0</float>
     <string></string>
    </void>
    <void method="put">
@@ -1112,11 +1112,7 @@ part of NeuroML or any standardised XML specification. -->
    </void>
   </void>
  </object>
- <object class="ucl.physiol.neuroconstruct.genesis.GenesisSettings">
-  <void property="unitSystemToUse">
-   <int>3</int>
-  </void>
- </object>
+ <object class="ucl.physiol.neuroconstruct.genesis.GenesisSettings"/>
  <object class="ucl.physiol.neuroconstruct.psics.PsicsSettings"/>
  <object class="ucl.physiol.neuroconstruct.simulation.SimulationParameters">
   <void property="dt">
@@ -1132,7 +1128,7 @@ part of NeuroML or any standardised XML specification. -->
    <float>-65.0</float>
   </void>
   <void property="reference">
-   <string>Sim_241</string>
+   <string>Sim_252</string>
   </void>
   <void property="saveCopyGenSimFiles">
    <boolean>true</boolean>
