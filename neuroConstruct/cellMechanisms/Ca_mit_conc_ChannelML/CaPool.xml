@@ -33,11 +33,8 @@
         
         <decaying_pool_model resting_conc ="0.00001" decay_constant="0.01">
 	  
-	    <fixed_pool_info>
-                <!-- this value is divided by the compt area to get the
-conversion factor between current and change in concentration. -->
-                <phi>95.431501</phi>
-            </fixed_pool_info>
+            
+            <pool_volume_info shell_thickness = "1e-7"/>
             
             <!-- pool_volume_info shell_thickness = "5.0e-6"/-->
             
