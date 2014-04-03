@@ -2,7 +2,7 @@
 <channelml xmlns="http://morphml.org/channelml/schema" 
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	   xmlns:meta="http://morphml.org/metadata/schema" 
-	   xsi:schemaLocation="http://morphml.org/channelml/schema  http://sourceforge.net/p/neuroml/code/1087/tree/trunk/web/NeuroMLFiles/Schemata/v1.8.1/Level2/ChannelML_v1.8.1.xsd?format=raw" 
+	   xsi:schemaLocation="http://morphml.org/channelml/schema http://www.neuroml.org/NeuroMLValidator/NeuroMLFiles/Schemata/v1.8.1/Level2/ChannelML_v1.8.1.xsd" 
 	   units="Physiological Units">
 
     <meta:notes>ChannelML file containing a single Channel description</meta:notes>
@@ -31,8 +31,7 @@
                                   ion="na" 
                                   default_gmax="120" 
                                   default_erev="50"
-                                  charge="1"
-                                  fixed_erev="yes">
+                                  charge="1">
  
             <q10_settings q10_factor="2" experimental_temp="24"/>
 

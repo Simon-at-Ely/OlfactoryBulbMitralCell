@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <channelml xmlns="http://morphml.org/channelml/schema" 
-	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	   xmlns:meta="http://morphml.org/metadata/schema" 
-	   xsi:schemaLocation="http://morphml.org/channelml/schema  http://sourceforge.net/p/neuroml/code/1087/tree/trunk/web/NeuroMLFiles/Schemata/v1.8.1/Level2/ChannelML_v1.8.1.xsd?format=raw"
-	   units="Physiological Units">
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+           xmlns:meta="http://morphml.org/metadata/schema" 
+           xsi:schemaLocation="http://morphml.org/channelml/schema http://www.neuroml.org/NeuroMLValidator/NeuroMLFiles/Schemata/v1.8.1/Level2/ChannelML_v1.8.1.xsd"
+           units="Physiological Units">
 
     <meta:notes>ChannelML file containing a single Channel description</meta:notes>
 
@@ -11,8 +11,8 @@
     <channel_type name="KCa3_ChannelML_new" density="yes">
         
         <status value="in_progress">
-	    <meta:comment>A channel from Bhalla, U.S.and Bower, J.M. Exploring parameter space in detailed single neuron models:
-	    simulations of the mitral and granule cells of the olfactory bulb9</meta:comment>
+            <meta:comment>A channel from Bhalla, U.S.and Bower, J.M. Exploring parameter space in detailed single neuron models:
+                simulations of the mitral and granule cells of the olfactory bulb9</meta:comment>
             <meta:issue>This ChannelML file is intended to replicate the GENESIS functionality of a tabchannel version of Kca_mit_usb </meta:issue>
             <meta:contributor>
                 <meta:name>Simon O'Connor</meta:name>
@@ -22,9 +22,9 @@
         <meta:notes>Calcium dependent K channel</meta:notes>
         
         <meta:publication>
-		<meta:fullTitle>Bhalla, U.S.and Bower, J.M. Exploring parameter space in detailed single neuron models:
-		simulations of the mitral and granule cells of the olfactory bulb. J Neurophysiol, Nov 1993; 69: 1948 - 1965</meta:fullTitle>
-		<meta:pubmedRef>www.ncbi.nlm.nih.gov/pubmed/7688798</meta:pubmedRef>
+            <meta:fullTitle>Bhalla, U.S.and Bower, J.M. Exploring parameter space in detailed single neuron models:
+                simulations of the mitral and granule cells of the olfactory bulb. J Neurophysiol, Nov 1993; 69: 1948 - 1965</meta:fullTitle>
+            <meta:pubmedRef>www.ncbi.nlm.nih.gov/pubmed/7688798</meta:pubmedRef>
         </meta:publication>
 
 
@@ -33,45 +33,43 @@
             <meta:uri>http://senselab.med.yale.edu/neuronDB/channelGene2.aspx#table3</meta:uri>
         </meta:neuronDBref>
 
-
-
         
         <current_voltage_relation cond_law="ohmic" 
-				  ion="kCa" 
-				  default_gmax="3.6" 
-				  default_erev="-80">
+                                  ion="k" 
+                                  default_gmax="3.6" 
+                                  default_erev="-80">
           
-        <conc_dependence name="Calcium" 
-			 ion="ca" 
-			 charge="2" 
-			 variable_name="ca_conc" 
-			 min_conc="0" 
-			 max_conc="1e-8"/>
+            <conc_dependence name="Calcium" 
+                         ion="ca" 
+                         charge="2" 
+                         variable_name="ca_conc" 
+                         min_conc="0" 
+                         max_conc="1e-8"/>
        
           
-        <gate name="m" instances="1">
-            <closed_state id="m0"/>
-            <open_state id="m" fraction="1"/>
+            <gate name="m" instances="1">
+                <closed_state id="m0"/>
+                <open_state id="m" fraction="1"/>
             
-	    <transition name="alpha" from="m0" to="m" expr_form="generic" expr="(exp ((v-65)/27))"/>
-	    <transition name="beta" from="m" to="m0" expr_form="generic" expr="0.008"/>
+                <transition name="alpha" from="m0" to="m" expr_form="generic" expr="(exp ((v-65)/27))"/>
+                <transition name="beta" from="m" to="m0" expr_form="generic" expr="0.008"/>
             
-        </gate>
+            </gate>
 	
-	<gate name="z" instances="1"> 
-	    <closed_state id="z0"/>
-	    <open_state id="z" fraction="1"/>
+            <gate name="z" instances="1"> 
+                <closed_state id="z0"/>
+                <open_state id="z" fraction="1"/>
 		  
-	    <transition name="alpha" from="z0" to="z" expr_form="generic" expr="(500.0*(0.015 - (ca_conc*1e6)))/( (exp ((0.015 - (ca_conc*1e6))/0.0013)) -1)"/>
-	    <transition name="beta" from="z" to="z0" expr_form="generic" expr="0.0021"/>
+                <transition name="alpha" from="z0" to="z" expr_form="generic" expr="(500.0*(0.015 - (ca_conc*1e6)))/( (exp ((0.015 - (ca_conc*1e6))/0.0013)) -1)"/>
+                <transition name="beta" from="z" to="z0" expr_form="generic" expr="0.0021"/>
 		  
-         </gate>
-      </current_voltage_relation>  
+            </gate>
+        </current_voltage_relation>  
         
 
-	<impl_prefs>
-		<table_settings max_v="50" min_v="-100" table_divisions="300"/>
-	</impl_prefs>
+        <impl_prefs>
+            <table_settings max_v="50" min_v="-100" table_divisions="300"/>
+        </impl_prefs>
 	
         
     </channel_type>

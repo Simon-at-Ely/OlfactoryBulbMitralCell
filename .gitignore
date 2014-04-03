@@ -1,7 +1,12 @@
 *~
 neuroConstructOld
 *.bak
+neuroConstruct/generatedMOOSE
 neuroConstruct/generatedNEURON
 neuroConstruct/generatedGENESIS
 neuroConstruct/generatedNeuroML
 neuroConstruct/simulations
+x86_64
+umac
+i386
+

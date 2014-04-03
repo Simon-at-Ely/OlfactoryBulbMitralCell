@@ -601,7 +601,7 @@ part of NeuroML or any standardised XML specification. -->
      <string>Cell6</string>
     </void>
     <void method="add">
-     <string>TestCell_Ca</string>
+     <string>TestCell</string>
     </void>
    </void>
    <void method="get">
@@ -1245,6 +1245,37 @@ part of NeuroML or any standardised XML specification. -->
      </void>
     </object>
    </void>
+   <void method="add">
+    <object class="ucl.physiol.neuroconstruct.project.SimPlot">
+     <void property="cellGroup">
+      <string>CellGroup_Test</string>
+     </void>
+     <void property="cellNumber">
+      <string>0</string>
+     </void>
+     <void property="graphWindow">
+      <string>GraphWin_5</string>
+     </void>
+     <void property="maxValue">
+      <float>1.0E-7</float>
+     </void>
+     <void property="minValue">
+      <float>-1.5E-6</float>
+     </void>
+     <void property="plotAndOrSave">
+      <string>Plot and save</string>
+     </void>
+     <void property="plotReference">
+      <string>Var_16</string>
+     </void>
+     <void property="segmentId">
+      <string>0</string>
+     </void>
+     <void property="valuePlotted">
+      <string>LCa3_mit_usb_ChannelML:CURR_DENS:ca</string>
+     </void>
+    </object>
+   </void>
   </void>
  </object>
  <object class="ucl.physiol.neuroconstruct.project.ProjectProperties">
@@ -1304,7 +1335,7 @@ part of NeuroML or any standardised XML specification. -->
  <object class="ucl.physiol.neuroconstruct.psics.PsicsSettings"/>
  <object class="ucl.physiol.neuroconstruct.simulation.SimulationParameters">
   <void property="dt">
-   <float>0.025</float>
+   <float>0.001</float>
   </void>
   <void property="duration">
    <float>300.0</float>
@@ -1316,7 +1347,7 @@ part of NeuroML or any standardised XML specification. -->
    <float>-65.0</float>
   </void>
   <void property="reference">
-   <string>Sim_263</string>
+   <string>Sim_307</string>
   </void>
   <void property="saveCopyGenSimFiles">
    <boolean>true</boolean>
@@ -2892,6 +2923,11 @@ part of NeuroML or any standardised XML specification. -->
    </void>
    <void method="add">
     <object class="ucl.physiol.neuroconstruct.simulation.IClampSettings">
+     <void property="amp">
+      <void property="fixedNum">
+       <float>0.01</float>
+      </void>
+     </void>
      <void property="cellGroup">
       <string>CellGroup_Test</string>
      </void>
