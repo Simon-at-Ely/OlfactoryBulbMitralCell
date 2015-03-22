@@ -9,7 +9,7 @@ https://github.com/Simon-at-Ely/OlfactoryBulbMitralCell/issues/7
 
 If you are new to neuroConstruct and wish to particpate, neuroConstruct is hosted on Github and can be easily installed:
 
-Linux/Mac
+* Linux/Mac *
 
 You first need to install Apache Ant if you don’t already have it, which should be available in the update program for your distro of Linux or the website is here: http://ant.apache.org/ also needed:
 
@@ -23,24 +23,25 @@ Mac Pre-requisites: XCode command line tools downloaded and installed (http://g.
 Git command line tool downloaded and installed (http://git-scm.com/download/mac)
                                    (https://help.github.com/articles/set-up-git)
  
-git clone https://github.com/NeuralEnsemble/neuroConstruct.git neuroConstruct
+	git clone https://github.com/NeuralEnsemble/neuroConstruct.git neuroConstruct
 
-cd ~/neuroConstruct
+	cd ~/neuroConstruct
 
-./updatenC.sh 
+	./updatenC.sh 
 
-ant run
+	ant run
  
 to add the mitral cell model:
-git clone https://github.com/Simon-at-Ely/OlfactoryBulbMitralCell.git OlfactoryBulbMitralCell
+
+	git clone https://github.com/Simon-at-Ely/OlfactoryBulbMitralCell.git OlfactoryBulbMitralCell
  
 then to run neuroConstruct:
  
-cd ~/neuroConstruct
+	cd ~/neuroConstruct
 
-./nC.sh
+	./nC.sh
 
-Windows
+* Windows *
 
 Install the packages listed above or check that they're already installed on your system
 
@@ -49,9 +50,12 @@ Install the packages listed above or check that they're already installed on you
 	updatenC.bat
 	ant run
 
+to add the mitral cell model:
+	git clone https://github.com/Simon-at-Ely/OlfactoryBulbMitralCell.git OlfactoryBulbMitralCell
+
 Then to run neuroConstruct:
 
-   nC.bat
+	nC.bat
  
 neuroConstruct is Gui based so you can click open project and navigate to model to open it. When you have opened it to run the model in Neuron (you will need Neuron installed on your computer):
  
