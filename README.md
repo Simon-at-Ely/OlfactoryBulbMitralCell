@@ -3,7 +3,7 @@ OlfactoryBulbMitralCell
 
 Area to develop a community olfactory bulb model implemented in Neuron using neuroConstruct
 
-Discussion of project can be found here:
+Discussion of the project can be found here:
 
 https://github.com/Simon-at-Ely/OlfactoryBulbMitralCell/issues/7
 
