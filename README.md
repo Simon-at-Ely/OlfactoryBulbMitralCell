@@ -27,14 +27,19 @@ git clone https://github.com/Simon-at-Ely/OlfactoryBulbMitralCell.git OlfactoryB
 then to run neuroConstruct:
  
 cd ~/neuroConstruct
+
 ./nC.sh
  
 neuroConstruct is Gui based so you can click open project and navigate to model to open it. When you have opened it to run the model in Neuron (you will need Neuron installed on your computer):
  
 Pick the ‘generate’ tab and move to the bottom of the screen and click the choose network button.
+
 Choose the stored network and the design of the model will be generated.
+
 Next go to the ‘export’ tab and choose the ‘Neuron’ tab on that page.
+
 Click on the generate hoc code button.
+
 When the run hoc code button becomes active, clicking on it should launch Neuron and run the model. If nothing happens you will need to edit the path for Neuron in the neuroConstruct user setting that can be accessed through the menu at the top of the window.
 
 
