@@ -14,8 +14,11 @@ Linux
 You first need to install Apache Ant if you don’t already have it, which should be available in the update program for your distro of Linux or the website is here: http://ant.apache.org/ 
  
 git clone https://github.com/NeuralEnsemble/neuroConstruct.git neuroConstruct
+
 cd ~/neuroConstruct
+
 ./updatenC.sh 
+
 ant run
  
 to add the mitral cell model:
